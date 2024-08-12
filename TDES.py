@@ -296,7 +296,9 @@ def sim_1DES():
 
     print(f"Decrypted Text: {decrypted_text}")
 
-    print("time :", time.time() - start1)  # 현재시각 - 시작시간 = 실행 시간
+    tm1 = time.time() - start1
+
+    return tm1
 
 
 # 3DES 암호화
@@ -361,9 +363,15 @@ def sim_3DES():
     decrypted_text = bit_array_to_str(decrypted_bits)
     print(f"Decrypted Text: {decrypted_text}")
 
-    print("time :", time.time() - start2)  # 현재시각 - 시작시간 = 실행 시간
+    tm2 = time.time() - start2
+
+    return tm2
 
 
 if __name__ == "__main__":
-    sim_1DES()
-    sim_3DES()
+    time_des = sim_1DES()
+    time_tdes = sim_3DES()
+
+    print("DES Time: {}".format(time_des))
+    print("TDES Time: {}".format(time_tdes))
+    print("{:.2f} times slower".format(time_tdes/time_des))
